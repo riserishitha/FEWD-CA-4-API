@@ -1,0 +1,121 @@
+*{
+  margin: 0px;
+}
+.data{
+  display: grid;
+  background-color: #D7DDE8;
+  grid-template-columns: repeat(4,1fr);
+}
+.Opening{
+  background-color:#D7DDE8 ;  
+  height: 100vh;
+}
+.dataMain {
+  text-align: center;
+  width: 200px;
+  margin-top: 5%;
+  margin-left: 20%;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  border-radius: 10px;
+  background-image: url("https://i.pinimg.com/736x/94/d9/f2/94d9f27cbe0eb73dc378202863aeb145.jpg");
+}
+.dataMain img{
+  margin-top: 3%;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.dataMain:hover {
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.Open img{  
+  width: 300px;
+  margin-top: 3%;
+  height: 30px;
+}
+.Open input{
+  width: 600px;
+  border-radius: 10px;
+  height: 30px;
+  font-size: 1rem;
+}
+.logo{
+  height: 200px;
+  border-radius: 100px;
+  width: 200px;
+}
+.invite{
+  height: 300px;
+  margin: 5%;
+  border-radius: 30px;
+  border: 2px solid black;
+  color: rgb(255, 255, 255);
+  position: relative;
+  background-image: url("https://media.istockphoto.com/id/539673892/photo/library-background-with-wooden-shelves-full-of-books.jpg?s=612x612&w=0&k=20&c=oL_j8uiVtvZz2zxZeZ3AHfsCBeKOS1j4_gaGE6vT11s=");
+}
+.title{
+  font-size: 3rem;
+  text-align: center;
+  background-color: black;
+  font-weight: 900;
+  border-radius: 30px;
+}
+
+form{
+  background-color: rgba(0, 0, 0, 0.39);
+  text-align: center;
+  height: 400px;
+  margin: 5%;
+  align-items: center;
+  border-radius:20px ;
+  justify-content: center;
+}
+.main input{
+  width: 400px;
+  height: 40px;
+  font-size: 1.25rem;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
+.main{
+  background-image: url("https://thumbs.dreamstime.com/b/books-seamless-pattern-vector-illustration-flat-design-style-academic-learning-symbol-reading-school-sign-knowledge-design-83264934.jpg");
+  height: 100vh;
+}
+.register{
+  text-decoration: none;
+  width: 100px;
+  height: 30px;
+  font-size: 1rem;
+  margin-left: 300px;
+  border-radius: 10px;
+  background-color: white;
+}
+@media only screen and (min-width:250px) and (max-width:670px) {
+  .Open input{
+    width: 50%;
+  }
+  .Open{
+    display: flex;
+  }
+  .Open img{
+    width: 80px;
+  }
+  .data{
+    display: block;
+  }
+  .register{
+    margin-left: 0px;
+  }
+  .logo{
+    width: 60px;
+    height: 60px;
+  }
+  .title{
+    font-size: 30px;
+  }
+  .main input{
+    width: 70%;
+  }
+} 
