@@ -1,40 +1,35 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+// initializing the state using setstate.
 function OpenPage() {
-  const [Booksinfro, setBooks] = useState([]);
+  const [originalBooksInfo, setOriginalBooksInfo] = useState([]);
+  const [filteredBooksInfo, setFilteredBooksInfo] = useState([]);
   const [isSearchFocused, setSearchFocused] = useState(false);
-
+// fetching the data using axios.
   useEffect(() => {
     axios
       .get("https://reactnd-books-api.udacity.com/books", {
         headers: { Authorization: "whatever-you-want" },
       })
       .then((response) => {
-        setBooks(response.data.books);
+        setOriginalBooksInfo(response.data.books);
+        setFilteredBooksInfo(response.data.books);
       });
   }, []);
-
-  const Accordingtoinput = (event) => {
-    const enterinput = event.target.value.toLowerCase();
-    if (Booksinfro) {
-      const findresults = Booksinfro.filter((book) => {
-        return book.title.toLowerCase().startsWith(enterinput);
-      });
-
-      setBooks(findresults);
-    }
+// filtering the data based on the given input in the search bar.
+  const BasedonInput = (e) => {
+    const afterEnteringInput = e.target.value.toLowerCase();
+    const findResults = originalBooksInfo.filter((book) => {
+      return book.title.toLowerCase().startsWith(afterEnteringInput);
+    });
+    setFilteredBooksInfo(findResults);
   };
 
   const handleSearchFocus = () => {
     setSearchFocused(true);
   };
-
-  const handleSearchBlur = () => {
-    setSearchFocused(false);
-  };
-
+  // returing the html for the component.
   return (
     <div className="Opening">
       <div className="Open">
@@ -44,17 +39,18 @@ function OpenPage() {
             alt=""
           />
         </Link>
+        {/* appling onchange and onfocus for the input box */}
         <input
           type="text"
           placeholder="Search Bar..."
-          onChange={Accordingtoinput}
+          onChange={BasedonInput}
           onFocus={handleSearchFocus}
-          onBlur={handleSearchBlur}
         />
         <button className="register">
           <Link to="/form"> Register </Link>
         </button>
       </div>
+      {/* hidding it when i click on the search bar */}
       {!isSearchFocused && (
         <div className="invite">
           <h1 className="title">Online Books Store</h1>
@@ -65,13 +61,14 @@ function OpenPage() {
           />
         </div>
       )}
+      {/* mapingout the data which we featching by using api */}
       <div className="data">
-        {Booksinfro.map((book, index) => (
+        {filteredBooksInfo.map((book, index) => (
           <div key={index} className="dataMain">
             <div>
               <img src={book.imageLinks.smallThumbnail} alt={book.title} />
               <h3>{book.title}</h3>
-              <h4 style={{color:"White"}}>  Free</h4>
+              <h4 style={{ color: "White" }}>  Free</h4>
             </div>
           </div>
         ))}
